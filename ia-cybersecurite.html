@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <title>Veille - IA et Cybersécurité</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    .veille-feed {
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.92);
+      color: #111827;
+      padding: 1.25rem;
+    }
+
+    :root[data-theme="light"] .veille-feed {
+      background: #f8fafc;
+    }
+
+    .veille-feed h4 {
+      margin: 0;
+      font-size: 1.6rem;
+      line-height: 1.2;
+      color: #0f172a;
+    }
+
+    .veille-feed-tag {
+      margin: 0.3rem 0 1rem;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .veille-feed-item {
+      display: flex;
+      gap: 0.95rem;
+      align-items: flex-start;
+      padding: 0.85rem 0;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .veille-feed-item:first-of-type {
+      border-top: 0;
+      padding-top: 0.25rem;
+    }
+
+    .veille-feed-icon {
+      width: 52px;
+      height: 40px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      background: #e2e8f0;
+    }
+
+    .veille-feed-title {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .veille-feed-line {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #0f172a;
+      line-height: 1.45;
+    }
+
+    .veille-feed-meta {
+      margin: 0.2rem 0 0;
+      font-size: 0.92rem;
+      color: #64748b;
+    }
+
+    .timeline {
+      margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 110px 20px 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .timeline-date {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: right;
+      padding-top: 0.2rem;
+    }
+
+    .timeline-marker {
+      position: relative;
+      min-height: 120px;
+    }
+
+    .timeline-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+      margin-top: 0.25rem;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 16px;
+      left: 5px;
+      width: 2px;
+      bottom: -26px;
+      background: var(--border);
+    }
+
+    .timeline-item:last-child .timeline-line {
+      display: none;
+    }
+
+    .timeline-card {
+      background: var(--accent-soft);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    .timeline-card h4 {
+      margin: 0 0 0.4rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.9rem;
+    }
+
+    .timeline-card p {
+      margin: 0;
+      color: var(--text);
+    }
+
+    .timeline-read {
+      display: inline-flex;
+      margin-top: 0.7rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      background: rgba(15, 23, 42, 0.35);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 760px) {
+      .timeline-item {
+        grid-template-columns: 86px 18px 1fr;
+        gap: 0.75rem;
+      }
+
+      .timeline-date {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-date {
+        text-align: left;
+        padding: 0;
+      }
+
+      .timeline-marker {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="section-title">
+        <h2>Veille - IA & Cybersécurité</h2>
+        <p>L'intelligence artificielle redéfinit le paysage des cybermenaces en 2026.</p>
+      </div>
+      
+      <div class="contact-content" style="text-align:left;">
+        <h3>Contexte</h3>
+        <p>L'intelligence artificielle redéfinit le paysage des cybermenaces en 2026 : côté attaquants comme côté défenseurs, les règles du jeu changent à un rythme inédit. Voici ce que j'ai retenu de plusieurs semaines de veille active.</p>
+        
+        <h3 style="margin-top: 2rem;">Méthodologie</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 2rem;">
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">📰 Feedly</h4>
+            <p>J'ai créé plusieurs flux d'information en suivant des sources spécialisées en cybersécurité et IA. Il suffit de rechercher un mot clé pour s'abonner aux contenus pertinents qui se mettent à jour en temps réel, chaque jour.</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.5rem;">🔔 Google Alertes</h4>
+            <p>J'ai configuré des alertes quotidiennes pour recevoir automatiquement les articles les plus pertinents directement par e-mail. L'outil s'occupe tout seul de sélectionner ce qui correspond à mes mots clés.</p>
+          </div>
+        </div>
+
+        <h3>Chiffres clés — 2025 / 2026</h3>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 2rem;">
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; text-align: center;">
+            <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">91%</div>
+            <p style="font-size: 13px; color: var(--muted);">des pros estiment que l'IA rend le phishing plus dangereux</p>
+            <p style="font-size: 11px; color: var(--muted); margin-top: 0.5rem;">Darktrace, 2026</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; text-align: center;">
+            <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">+97%</div>
+            <p style="font-size: 13px; color: var(--muted);">de prompts risqués détectés en entreprise en 2025</p>
+            <p style="font-size: 11px; color: var(--muted); margin-top: 0.5rem;">Check Point, 2026</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; text-align: center;">
+            <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">13%</div>
+            <p style="font-size: 13px; color: var(--muted);">des attaques mondiales de ransomware ont visé la France</p>
+            <p style="font-size: 11px; color: var(--muted); margin-top: 0.5rem;">Check Point, 2026</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; text-align: center;">
+            <div style="font-size: 24px; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">4,44M$</div>
+            <p style="font-size: 13px; color: var(--muted);">coût moyen d'une violation de données en 2025</p>
+            <p style="font-size: 11px; color: var(--muted); margin-top: 0.5rem;">IBM, 2025</p>
+          </div>
+        </div>
+
+        <h3>Flux du jour — Feedly</h3>
+        <div class="veille-feed">
+          <p class="veille-feed-title">Security · IA</p>
+          <p class="veille-feed-tag">Aujourd'hui</p>
+
+          <div class="veille-feed-item">
+            <span class="veille-feed-icon">⚠️</span>
+            <div>
+              <p class="veille-feed-line">La France 2e pays le plus ciblé par les ransomwares en Europe en 2025, derrière le Royaume-Uni</p>
+              <p class="veille-feed-meta">Siècle Digital · fév. 2026 — Check Point Cyber Security Report 2026</p>
+            </div>
+          </div>
+
+          <div class="veille-feed-item">
+            <span class="veille-feed-icon">🤖</span>
+            <div>
+              <p class="veille-feed-line">Les agents IA autonomes deviennent des outils courants de cybercriminalité — Darktrace State of AI Cybersecurity 2026</p>
+              <p class="veille-feed-meta">ITForBusiness · fév. 2026</p>
+            </div>
+          </div>
+
+          <div class="veille-feed-item">
+            <span class="veille-feed-icon">🛡️</span>
+            <div>
+              <p class="veille-feed-line">NIS2 : la directive européenne concerne désormais plus de 15 000 entités françaises dans 18 secteurs</p>
+              <p class="veille-feed-meta">DigiTechnologie · janv. 2026</p>
+            </div>
+          </div>
+
+          <div class="veille-feed-item">
+            <span class="veille-feed-icon">🔐</span>
+            <div>
+              <p class="veille-feed-line">Seulement 6% des entreprises mondiales se disent pleinement prêtes à faire face aux cyberattaques — PwC</p>
+              <p class="veille-feed-meta">PwC Global Digital Trust Insights · 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <h3>Événements majeurs — timeline</h3>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-date">Jan. 2025</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Kiabi — Credential Stuffing</h4>
+              <p>Une attaque par réutilisation de mots de passe compromet les comptes de 20 000 clients, exposant notamment leurs IBAN.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Fév. 2025</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Harvest — Ransomware & MAIF</h4>
+              <p>Le logiciel Harvest est victime d'un ransomware, compromettant les données de 55 000 clients de la MAIF.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Oct. 2025</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Lycées Hauts-de-France — Ransomware Qilin</h4>
+              <p>Le ransomware Qilin paralyse 80% des lycées de la région, touchant environ 60 000 ordinateurs.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Nov. 2025</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Weda — Logiciel médical hors service</h4>
+              <p>Une cyberattaque paralyse Weda, logiciel utilisé par 23 000 professionnels de santé en France.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Jan. 2026</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Fédération nationale des chasseurs</h4>
+              <p>Cyberattaque visant le guichet de validation des permis de chasse, avec les données d'un million de chasseurs exposées.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-date">Fév. 2026</div>
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+              <div class="timeline-line"></div>
+            </div>
+            <div class="timeline-card">
+              <h4>Cegedim — 15 millions de données de santé exposées</h4>
+              <p>Une fuite massive liée au logiciel médical Cegedim expose les données de santé d'environ 15 millions de Français.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3>Ce qu'il faut retenir</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 2rem;">
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem;">Menaces</h4>
+            <p><strong>L'IA industrialise les cyberattaques</strong></p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 0.75rem;">Phishing hyper-personnalisé, deepfakes en temps réel, agents autonomes : les attaques gagnent en volume et sophistication.</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem;">Défense</h4>
+            <p><strong>L'IA agentique au cœur de la réponse</strong></p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 0.75rem;">Les SOC s'appuient sur l'IA agentique pour automatiser la détection et compenser la pénurie de talents.</p>
+          </div>
+          <div style="background: var(--accent-soft); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem;">
+            <h4 style="color: var(--accent); margin-bottom: 0.75rem;">Réglementation</h4>
+            <p><strong>NIS2 et AI Act imposent un cadre</strong></p>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 0.75rem;">NIS2 touche 15 000 entités françaises. AI Act classe les IA critiques comme systèmes à haut risque.</p>
+          </div>
+        </div>
+
+        <h3>Mon analyse</h3>
+        <p style="font-style: italic; padding: 1.5rem; background: var(--accent-soft); border-left: 3px solid var(--accent); border-radius: 8px;">
+          Ce qui frappe le plus, c'est la <strong>symétrie</strong> entre attaque et défense : l'IA accélère les deux camps simultanément. Les organisations qui n'investissent pas dans l'automatisation de leur défense risquent de se retrouver durablement en retard. La multiplication des incidents en 2025 — lycées, hôpitaux, logiciels médicaux — montre que <strong>personne n'est à l'abri</strong>, quelle que soit la taille ou le secteur.
+        </p>
+
+        <a href="index.html#veille" class="btn secondary" style="margin-top: 2rem;">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

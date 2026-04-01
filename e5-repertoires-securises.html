@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <title>E5 - Répertoires sécurisés</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="contact-content" style="text-align:left;">
+        <h2>BTS SIO</h2>
+        <h3>Situation professionnelle numéro 1</h3>
+
+        <h2>Création et sécurisation de répertoires réseau via script et serveur bastion</h2>
+
+        <h3>Description :</h3>
+        <p>
+          La création de répertoires sécurisés permet à une entreprise de disposer de ses dossiers
+          partagés dans un environnement contrôlé et fiable. Afin d'industrialiser les demandes et
+          d'éviter les erreurs de configuration manuelle, le processus s'appuie sur un fichier de calcul
+          (Excel) générant les paramètres de sécurité, appliqué ensuite via un script sécurisé depuis un
+          serveur bastion.
+        </p>
+
+        <hr>
+
+        <h2>Plan de la situation</h2>
+        <h3>Le cahier des charges</h3>
+        <ul>
+          <li>L'expression des besoins</li>
+          <li>La description de l'existant</li>
+          <li>L'analyse des choix</li>
+        </ul>
+        <h3>Mise en œuvre</h3>
+        <ul>
+          <li>Prise en charge et analyse du ticket incident / demande</li>
+          <li>Préparation des données et génération de la configuration</li>
+          <li>Connexion au serveur bastion et exécution du script</li>
+          <li>Clôture et vérification auprès du collaborateur</li>
+        </ul>
+
+        <hr>
+
+        <h2>Le cahier des charges</h2>
+
+        <h3>L'expression des besoins</h3>
+        <p>
+          Notre société souhaite normaliser et sécuriser la création des répertoires partagés pour ses
+          collaborateurs. L'objectif est d'attribuer précisément les droits d'accès (qui est propriétaire,
+          qui a les droits de lecture/écriture) selon les demandes, tout en garantissant la traçabilité des
+          opérations via un système de ticketing.
+        </p>
+
+        <h3>La description de l'existant</h3>
+        <p>
+          Actuellement, les demandes sont centralisées dans un "backlog" (gestionnaire de tickets). Les
+          dossiers de partages existent sur un serveur de fichiers central, mais l'accès direct à ce
+          serveur est restreint pour des raisons de sécurité évidentes.
+        </p>
+
+        <h3>L'analyse des choix</h3>
+        <p>Pour réaliser cette tâche en toute sécurité et de manière industrielle :</p>
+        <ul>
+          <li><strong>Le serveur Bastion :</strong> Choisi pour isoler le réseau d'administration. C'est le seul point d'entrée pour exécuter des commandes d'administration sur les serveurs de fichiers.</li>
+          <li><strong>Le fichier Excel "moulinette" :</strong> Permet de traduire les besoins humains (noms, chemins) en code ou paramètres systèmes stricts et sans fautes de frappe pour le script.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Mise en œuvre</h2>
+
+        <h3>Prise en charge et analyse du ticket</h3>
+        <p>Le processus débute par la vérification du backlog de l'entreprise :</p>
+        <ol>
+          <li>Parcours des tickets en attente de traitement.</li>
+          <li>Auto-attribution du ticket de création de répertoire pour en devenir le responsable.</li>
+          <li>Analyse des informations cruciales fournies par le demandeur :</li>
+        </ol>
+        <ul>
+          <li>Le chemin cible de l'arborescence où le dossier doit être créé.</li>
+          <li>L'identité du demandeur.</li>
+          <li>L'identité du futur gestionnaire du dossier.</li>
+          <li>Les éventuelles restrictions ou demandes particulières.</li>
+        </ul>
+
+        <h3>Préparation des données et génération de la configuration</h3>
+        <p>Pour éviter les erreurs d'exécution, un tableau Excel est utilisé comme traducteur de paramètres :</p>
+        <ol>
+          <li>Saisie des informations extraites du ticket dans les colonnes correspondantes (Chemin, Gestionnaire, etc.).</li>
+          <li>Le tableau Excel calcule automatiquement et génère une ligne de commande ou une chaîne de caractères spécifique.</li>
+          <li>Cette ligne représente la future configuration de sécurité et les droits ACL (Access Control List) du dossier.</li>
+          <li>Copie de cette ligne générée dans le presse-papier.</li>
+        </ol>
+
+        <h3>Connexion au serveur bastion et exécution du script</h3>
+        <p>L'action ne pouvant pas être faite depuis le poste client local pour des raisons de sécurité :</p>
+        <ol>
+          <li>Connexion sécurisée au <strong>serveur Bastion</strong> de l'entreprise.</li>
+          <li>Ouverture du terminal et appel du script d'automatisation de création de dossiers.</li>
+          <li>Collage de la ligne de sécurité générée précédemment par le fichier Excel.</li>
+          <li>Exécution du script : le répertoire est créé sur le serveur de fichiers cible avec les bons privilèges appliqués.</li>
+        </ol>
+
+        <h3>Clôture et vérification auprès du collaborateur</h3>
+        <p>Afin de finaliser le traitement :</p>
+        <ol>
+          <li>Demande au collaborateur de redémarrer sa machine (nécessaire pour actualiser ses jetons de sécurité Active Directory et monter le nouveau dossier).</li>
+          <li>Validation du bon accès avec le collaborateur.</li>
+          <li>Clôture définitive du ticket dans le backlog.</li>
+        </ol>
+
+        <a href="index.html#projects-pro" class="btn secondary">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

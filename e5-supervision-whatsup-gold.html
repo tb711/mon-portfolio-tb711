@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <title>E5 - Supervision avec WhatsUp Gold</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="contact-content" style="text-align:left;">
+        <h2>BTS SIO</h2>
+        <h3>Situation professionnelle numéro 3</h3>
+
+        <h2>Supervision du parc serveurs multi-sites et résolution d'incidents de connectivité</h2>
+
+        <h3>Description :</h3>
+        <p>
+          La supervision constante du parc informatique est essentielle pour garantir la haute
+          disponibilité des services au sein d'une entreprise internationale. Grâce à l'outil WhatsUp Gold,
+          l'activité consiste à monitorer l'état de santé des serveurs répartis sur plusieurs filiales (France,
+          Maroc, Tunisie, Gabon...) et à intervenir spécifiquement sur les alertes critiques de type "Ping
+          Down" affectant les serveurs Windows.
+        </p>
+
+        <hr>
+
+        <h2>Plan de la situation</h2>
+        <h3>Le cahier des charges</h3>
+        <ul>
+          <li>L'expression des besoins</li>
+          <li>La description de l'existant</li>
+          <li>L'analyse des choix</li>
+        </ul>
+
+        <h3>Mise en œuvre</h3>
+        <ul>
+          <li>Authentification et accès sécurisé à la console de supervision</li>
+          <li>Observation et filtrage des alertes du parc multi-sites</li>
+          <li>Traitement ciblé des incidents et résolution de pannes "Ping Down"</li>
+        </ul>
+
+        <hr>
+
+        <h2>Le cahier des charges</h2>
+
+        <h3>L'expression des besoins</h3>
+        <p>
+          L'entreprise possède une infrastructure réseau étendue à l'international avec de nombreux
+          serveurs critiques. Le besoin principal est de maintenir en condition opérationnelle l'ensemble
+          de ces machines en centralisant les alertes de pannes ou de pertes de connexion afin
+          d'intervenir le plus rapidement possible.
+        </p>
+
+        <h3>La description de l'existant</h3>
+        <p>Le parc informatique s'étend sur plusieurs sites géographiques majeurs :</p>
+        <ul>
+          <li><strong>En France :</strong> Siège et pôles techniques (ex: La Défense).</li>
+          <li><strong>À l'international :</strong> Casablanca (Maroc), Tunisie, Gabon, ainsi que d'autres sites secondaires.</li>
+        </ul>
+        <p>
+          Chaque site héberge des serveurs physiques et virtuels sous différents systèmes
+          d'exploitation (Windows et Linux).
+        </p>
+
+        <h3>L'analyse des choix</h3>
+        <p>
+          Pour répondre au besoin de centralisation, l'entreprise a fait le choix d'utiliser la solution
+          propriétaire <strong>WhatsUp Gold</strong>. L'accès à cette application est strictement restreint aux membres
+          habilités de l'équipe informatique via des identifiants d'entreprise nominatifs. Afin d'optimiser le
+          traitement des alertes au sein de l'équipe :
+        </p>
+        <ul>
+          <li>Les serveurs Linux sont attribués à un collaborateur dédié.</li>
+          <li>Les serveurs Windows me sont directement attribués pour l'observation et la remédiation.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Mise en œuvre</h2>
+
+        <h3>Authentification et accès sécurisé à la console de supervision</h3>
+        <ol>
+          <li>Lancement de l'application de monitoring WhatsUp Gold.</li>
+          <li>Connexion obligatoire à l'aide de mes identifiants et mot de passe de l'entreprise (gestion stricte des droits d'accès).</li>
+          <li>Accès au tableau de bord global présentant la cartographie et l'état de santé des serveurs de l'entreprise.</li>
+        </ol>
+
+        <h3>Observation et filtrage des alertes du parc multi-sites</h3>
+        <ol>
+          <li>Analyse visuelle constante des différents serveurs rattachés aux sites (France, Maroc, Tunisie, Gabon, etc.).</li>
+          <li>Lecture du flux d'alertes remontées par l'outil.</li>
+          <li>Analyse critique des alertes : l'expérience sur le parc permet de rapidement catégoriser et d'ignorer les "fausses alertes" connues et non bloquantes pour ne pas surcharger l'activité.</li>
+          <li>Focalisation de l'attention sur les pertes de connectivité totales.</li>
+        </ol>
+
+        <h3>Traitement ciblé des incidents et résolution de pannes "Ping Down"</h3>
+        <p>Dès lors qu'une alerte légitime de type "Ping Down" apparaît sur un serveur Windows :</p>
+        <ol>
+          <li>Prise en charge de l'alerte sur la console pour signifier le début de l'analyse.</li>
+          <li>Diagnostic de la panne : test d'envoi de requêtes ICMP (ping) manuel depuis mon poste pour confirmer la coupure.</li>
+          <li>Recherche de la cause racine (problème d'alimentation, déconnexion réseau, plantage du système d'exploitation de la machine, etc.).</li>
+          <li>Application des mesures correctives nécessaires pour rétablir la liaison réseau du serveur Windows.</li>
+          <li>Vérification sur l'interface WhatsUp Gold que le voyant du serveur repasse au vert, signifiant la résolution définitive du problème.</li>
+        </ol>
+
+        <a href="index.html#projects-pro" class="btn secondary">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

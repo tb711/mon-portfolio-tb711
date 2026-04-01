@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <title>E6 - Réseau physique avec VLAN et pfSense</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="section-title">
+        <h2>E6 - Réseau physique avec VLAN et pfSense</h2>
+        <p>Projet scolaire de BTS SIO SISR.</p>
+      </div>
+      <div class="contact-content" style="text-align:left;">
+        <p>Ce projet consiste à réaliser une maquette réseau en physique avec un switch managé, une machine cliente, un VLAN dédié et un pare-feu pfSense. L'objectif est d'isoler les flux, contrôler les accès et valider le bon routage inter-réseaux.</p>
+        <h3>Éléments du projet</h3>
+        <ul>
+          <li>1 machine cliente (poste utilisateur)</li>
+          <li>1 switch managé</li>
+          <li>1 pare-feu/routeur pfSense</li>
+          <li>1 VLAN configuré sur le switch</li>
+        </ul>
+        <h3>Travaux réalisés</h3>
+        <ul>
+          <li>Câblage et mise en service des équipements en physique</li>
+          <li>Création et affectation d'un VLAN sur le switch</li>
+          <li>Configuration des interfaces et des règles de filtrage sur pfSense</li>
+          <li>Attribution des adresses IP et tests de connectivité</li>
+          <li>Vérification de l'isolation réseau et des accès autorisés</li>
+        </ul>
+        <h3>Compétences mobilisées</h3>
+        <ul>
+          <li>Configuration VLAN</li>
+          <li>Administration switch</li>
+          <li>Routage et filtrage avec pfSense</li>
+          <li>Diagnostic réseau (TCP/IP)</li>
+        </ul>
+        <a href="index.html#projects-scolaires" class="btn secondary">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

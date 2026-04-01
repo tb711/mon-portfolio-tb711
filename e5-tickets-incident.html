@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    (function () {
+      const savedTheme = localStorage.getItem('theme');
+      document.documentElement.setAttribute('data-theme', savedTheme === 'light' ? 'light' : 'dark');
+    })();
+  </script>
+  <title>E5 - Traitement des tickets incident</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <section class="section">
+      <div class="contact-content" style="text-align:left;">
+        <h2>BTS SIO</h2>
+        <h3>Situation professionnelle numéro 2</h3>
+
+        <h2>Résolution d'un incident d'environnement de développement et migration d'OS VM</h2>
+
+        <h3>Description :</h3>
+        <p>
+          Le maintien en condition opérationnelle des outils de développement est crucial pour les
+          équipes de l'entreprise. Suite à un dysfonctionnement bloquant de l'application Visual Studio
+          Code sur une machine virtuelle Windows Server 2016, un diagnostic a mis en évidence une
+          incompatibilité de version d'OS. L'incident a nécessité une solution temporaire puis une
+          demande de migration de la VM vers Windows Server 2019 pour répondre au besoin du
+          collaborateur.
+        </p>
+
+        <hr>
+
+        <h2>Plan de la situation</h2>
+        <h3>Le cahier des charges</h3>
+        <ul>
+          <li>L'expression des besoins</li>
+          <li>La description de l'existant</li>
+          <li>L'analyse des choix</li>
+        </ul>
+
+        <h3>Mise en œuvre</h3>
+        <ul>
+          <li>Prise en charge de l'incident et premiers diagnostics</li>
+          <li>Recherche de solutions et contournement temporaire</li>
+          <li>Demande de migration d'infrastructure</li>
+          <li>Recette finale et clôture du ticket</li>
+        </ul>
+
+        <hr>
+
+        <h2>Le cahier des charges</h2>
+
+        <h3>L'expression des besoins</h3>
+        <p>
+          Un collaborateur de l'entreprise est bloqué dans son travail quotidien : lorsqu'il tente d'exécuter
+          son code depuis l'IDE Visual Studio Code, le terminal intégré ne s'affiche pas et génère un
+          message d'erreur. L'objectif est de rétablir un environnement de développement pleinement
+          fonctionnel avec la version la plus récente possible de l'application.
+        </p>
+
+        <h3>La description de l'existant</h3>
+        <p>
+          Le collaborateur travaille à distance sur une machine virtuelle (VM) hébergée sur
+          l'infrastructure de l'entreprise. Le système d'exploitation de cette VM est Windows Server 2016.
+        </p>
+
+        <h3>L'analyse des choix</h3>
+        <p>Lors de la résolution de cet incident, plusieurs étapes logiques d'analyse ont été menées :</p>
+        <ul>
+          <li><strong>La réinstallation propre :</strong> Recommandée par les outils internes pour éliminer un problème de corruption de fichiers.</li>
+          <li><strong>Le "Downgrade" (Rétrogradation de version) :</strong> Choisi comme solution de secours immédiate pour débloquer le collaborateur.</li>
+          <li><strong>La migration de l'OS de la VM :</strong> Solution pérenne retenue pour permettre l'exécution de la dernière version logicielle de VS Code, exigeant des prérequis système plus récents.</li>
+        </ul>
+
+        <hr>
+
+        <h2>Mise en œuvre</h2>
+
+        <h3>Prise en charge de l'incident et premiers diagnostics</h3>
+        <ol>
+          <li>Consultation du backlog de l'entreprise et auto-attribution du ticket d'incident.</li>
+          <li>Prise de contact avec le collaborateur pour analyser le comportement anormal de Visual Studio Code (absence d'affichage du terminal d'exécution).</li>
+          <li>Sollicitation du Chatbot interne de l'entreprise pour vérifier si cet incident est déjà connu.</li>
+          <li>Application de la consigne du Chatbot : désinstallation complète de VS Code et réinstallation propre de la toute dernière version disponible.</li>
+          <li>Constat d'échec : le problème persiste malgré la réinstallation.</li>
+        </ol>
+
+        <h3>Recherche de solutions et contournement temporaire</h3>
+        <ol>
+          <li>Élargissement de la recherche technique sur Internet avec les codes d'erreurs relevés.</li>
+          <li>Identification de la cause racine : la version de Windows Server 2016 de la VM est devenue trop ancienne et n'est plus totalement supportée par les dernières briques d'exécution de la mise à jour récente de VS Code.</li>
+          <li>Solution de contournement : installation d'une version antérieure de VS Code compatible avec Windows Server 2016. Le terminal fonctionne à nouveau.</li>
+        </ol>
+
+        <h3>Demande de migration d'infrastructure</h3>
+        <p>
+          Le collaborateur ayant exprimé le besoin absolu d'utiliser la dernière version de VS Code pour
+          ses projets :
+        </p>
+        <ol>
+          <li>Formulation d'une demande d'escalade / changement pour migrer la machine virtuelle du collaborateur vers un système d'exploitation plus récent (Windows Server 2019).</li>
+          <li>Traitement de la migration par l'équipe d'infrastructure dédiée (action réalisée en asynchrone sans ma participation directe).</li>
+        </ol>
+
+        <h3>Recette finale et clôture du ticket</h3>
+        <ol>
+          <li>Une fois la VM migrée avec succès sous Windows Server 2019 par l'équipe infra, reprise de contact avec le collaborateur.</li>
+          <li>Procédure d'installation propre de la dernière version de Visual Studio Code sur le nouvel OS.</li>
+          <li>Phase de tests : ouverture de l'IDE, lancement du terminal et exécution de code. Tout est parfaitement fonctionnel.</li>
+          <li>Validation de la satisfaction du collaborateur et clôture du ticket d'incident dans le backlog.</li>
+        </ol>
+
+        <hr>
+
+        <a href="index.html#projects-pro" class="btn secondary">Retour</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
